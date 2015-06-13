@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div ng-controller="myControl">My name is {{name}} <br/>
+My age is {{age}}<br/>
+I am {{sex}}</div>
+
+<br />
+
+<div ng-controller="mySecCtrl">My name is {{name}} <br/>
+My age is {{age}} <br />
+I am {{sex}}</div>
+
+
+
+
+
+<script src="node_modules/angular/angular.js"></script>
+<script>
+    var myApp = angular.module('myApp', []);
+
+    myApp.controller('myControl', ['$scope', function($scope){
+        $scope.name = "Charlie";
+        $scope.age = 25;
+        $scope.sex = "male"
+    }]);
+
+    myApp.controller('mySecCtrl', ['$scope', function($scope){
+        $scope.name = "Peter";
+        $scope.age = 33;
+        $scope.sex = "female"
+    }]);
+
+</script>
+</body>
+</html>
