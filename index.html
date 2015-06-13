@@ -6,15 +6,32 @@
 </head>
 <body>
 
-<div ng-controller="myControl">My name is {{name}} <br/>
+<div ng-controller="myControl">
+My name is {{name}} <br/>
 My age is {{age}}<br/>
-I am {{sex}}</div>
+I am {{sex}}<br />
+    <div ng-repeat="m in movies">
+        {{m}}
+    </div>
 
-<br />
+    <div ng-repeat="d in drinks">
+        {{d}}
+    </div>
+    <br />
 
-<div ng-controller="mySecCtrl">My name is {{name}} <br/>
-My age is {{age}} <br />
-I am {{sex}}</div>
+    <button ng-click="clickFun()">check me!</button>
+    <div>{{checkClick}}</div>
+    <br />
+
+    <button id="btn2">check me again</button>
+    <div>{{checkClick2}}</div>
+
+</div>
+
+
+
+
+
 
 
 
@@ -27,13 +44,24 @@ I am {{sex}}</div>
     myApp.controller('myControl', ['$scope', function($scope){
         $scope.name = "Charlie";
         $scope.age = 25;
-        $scope.sex = "male"
-    }]);
+        $scope.sex = "male";
 
-    myApp.controller('mySecCtrl', ['$scope', function($scope){
-        $scope.name = "Peter";
-        $scope.age = 33;
-        $scope.sex = "female"
+        $scope.movies = ["facebook", "super man", "iron man", "hangover"];
+
+        $scope.drinks = {name: "Starbucks", coffee: "black", sugar: "none"};
+
+        $scope.checkClick = "no clicked";
+        $scope.checkClick2 = "no clicked 2";
+
+        $scope.clickFun = function(){
+            $scope.checkClick = "clicked";
+        };
+
+        var btn2 = document.getElementById('btn2');
+        btn2.addEventListener('click', function(){
+            $scope.checkClick2 = "clicked 2";
+            $scope.$apply(); //watch list
+        });
     }]);
 
 </script>
